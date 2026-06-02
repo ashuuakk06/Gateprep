@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GATE Prep Tracker AI</title>
+  <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/solid.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <div class="animated-bg" aria-hidden="true"></div>
+
+  <header class="public-header" id="publicHeader">
+    <a href="#home" class="brand-mark" aria-label="GATE Prep Tracker AI home">
+      <span class="brand-icon"><i class="fa-solid fa-chart-line"></i></span>
+      <span>GATE Prep Tracker AI</span>
+    </a>
+    <nav class="public-nav" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#countdown">Countdown</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+      <button class="btn ghost auth-open" type="button" data-auth-tab="login">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Login
+      </button>
+      <button class="btn primary auth-open" type="button" data-auth-tab="signup">
+        <i class="fa-solid fa-user-plus"></i>
+        Sign Up
+      </button>
+    </div>
+  </header>
+
+  <main class="public-view" id="publicView">
+    <section class="hero" id="home">
+      <div class="hero-media" aria-hidden="true">
+        <div class="orbital orbital-one"></div>
+        <div class="orbital orbital-two"></div>
+        <div class="grid-plane"></div>
+        <div class="signal-card signal-a">
+          <span>Prep Meter</span>
+          <strong>78%</strong>
+        </div>
+        <div class="signal-card signal-b">
+          <span>Predicted Score</span>
+          <strong>742</strong>
+        </div>
+        <div class="signal-card signal-c">
+          <span>Focus Streak</span>
+          <strong>12 days</strong>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">Personalized GATE preparation dashboard</p>
+        <h1>GATE Prep Tracker AI</h1>
+        <p class="hero-tagline">Plan Smarter. Study Better. Score Higher.</p>
+        <div class="hero-actions">
+          <button class="btn primary large auth-open" type="button" data-auth-tab="signup">
+            <i class="fa-solid fa-rocket"></i>
+            Start Tracking
+          </button>
+          <button class="btn glass large auth-open" type="button" data-auth-tab="login">
+            <i class="fa-solid fa-lock-open"></i>
+            Continue
+          </button>
+        </div>
+      </div>
+      <div class="countdown-panel" id="countdown">
+        <div class="panel-heading">
+          <p class="eyebrow">Live countdown</p>
+          <h2>Next GATE window</h2>
+        </div>
+        <div class="countdown-grid" aria-live="polite">
+          <div><strong id="countDays">000</strong><span>Days</span></div>
+          <div><strong id="countHours">00</strong><span>Hours</span></div>
+          <div><strong id="countMinutes">00</strong><span>Minutes</span></div>
+          <div><strong id="countSeconds">00</strong><span>Seconds</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section" id="features">
+      <div class="section-title">
+        <p class="eyebrow">One command center</p>
+        <h2>Study planning, analytics, revision, and mentoring in one app.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><i class="fa-solid fa-wand-magic-sparkles"></i><h3>AI Study Planner</h3><p>Daily, weekly, and monthly plans adjust around your weak topics, hours, and target score.</p></article>
+        <article class="feature-card"><i class="fa-solid fa-chart-simple"></i><h3>Mock Test Analysis</h3><p>Track scores, accuracy, time, trend lines, and topic priority after every mock.</p></article>
+        <article class="feature-card"><i class="fa-solid fa-bullseye"></i><h3>Score Prediction</h3><p>Estimate score, rank, consistency, burnout risk, and the daily hours needed.</p></article>
+        <article class="feature-card"><i class="fa-solid fa-rotate"></i><h3>Revision Tracker</h3><p>Manage three revision cycles per subject and see your momentum in a heatmap.</p></article>
+        <article class="feature-card"><i class="fa-solid fa-layer-group"></i><h3>Subject Progress</h3><p>Track chapters completed, pending work, and completion percentage subject by subject.</p></article>
+        <article class="feature-card"><i class="fa-solid fa-comments"></i><h3>AI Mentor</h3><p>Ask for today's plan, revision strategy, weak subject detection, and 900+ score strategy.</p></article>
+        <article class="feature-card"><i class="fa-solid fa-file-pdf"></i><h3>PDF Reports</h3><p>Export daily, weekly, monthly, mock, and revision reports directly from the dashboard.</p></article>
+        <article class="feature-card"><i class="fa-solid fa-grip"></i><h3>Heatmap Analytics</h3><p>See activity density from study hours, PYQs, and mock test activity.</p></article>
+      </div>
+                    </button>
+            </div>
+            <div class="split-grid">
+              <section class="panel">
+                <div class="panel-heading"><p class="eyebrow">Daily Plan</p><h3>Today</h3></div>
+                <div class="task-list" id="plannerDaily"></div>
+              </section>
+              <section class="panel">
+                <div class="panel-heading"><p class="eyebrow">Weekly Planner</p><h3>7-day sprint</h3></div>
+                <div class="planner-list" id="weeklyPlanner"></div>
+              </section>
+            </div>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Monthly Planner</p><h3>4-week focus map</h3></div>
+              <div class="month-grid" id="monthlyPlanner"></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-subjects" data-title="Subject Progress">
+            <div class="view-head">
+              <div><p class="eyebrow">Subject tracker</p><h2>Progress by subject</h2></div>
+            </div>
+            <div class="subject-grid" id="subjectProgress"></div>
+          </section>
+
+          <section class="view" id="view-chapters" data-title="Chapter Tracker">
+            <div class="view-head">
+              <div><p class="eyebrow">Chapter completion</p><h2>Mark completed chapters</h2></div>
+              <label class="compact-label">Subject<select id="chapterSubjectSelect"></select></label>
+            </div>
+            <section class="panel">
+              <div class="chapter-header" id="chapterSummary"></div>
+              <div class="chapter-list" id="chapterList"></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-mocks" data-title="Mock Test Analysis">
+            <div class="view-head">
+              <div><p class="eyebrow">Mock analysis</p><h2>Scores, accuracy, and weak topics</h2></div>
+            </div>
+            <form class="panel data-form" id="mockForm" novalidate>
+              <label>Mock Name<input type="text" name="mockName" required></label>
+              <label>Score<input type="number" name="score" min="0" max="100" step="0.01" required></label>
+              <label>Accuracy %<input type="number" name="accuracy" min="0" max="100" step="0.01" required></label>
+              <label>Time Taken (minutes)<input type="number" name="timeTaken" min="1" required></label>
+              <label>Date<input type="date" name="date" required></label>
+              <button class="btn primary" type="submit"><i class="fa-solid fa-plus"></i>Add Mock</button>
+            </form>
+            <div class="stats-grid compact" id="mockStats"></div>
+            <div class="split-grid">
+              <section class="panel"><div class="panel-heading"><p class="eyebrow">Score Trend</p><h3>Mock scores</h3></div><canvas id="scoreTrendChart" height="190"></canvas></section>
+              <section class="panel"><div class="panel-heading"><p class="eyebrow">Accuracy Trend</p><h3>Accuracy curve</h3></div><canvas id="accuracyTrendChart" height="190"></canvas></section>
+            </div>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Weak Topic Detection</p><h3>Priority ranking</h3></div>
+              <div class="weak-topic-list" id="weakTopics"></div>
+            </section>
+            <section class="panel"><div class="table-wrap"><table><thead><tr><th>Mock</th><th>Score</th><th>Accuracy</th><th>Time</th><th>Date</th><th></th></tr></thead><tbody id="mockTable"></tbody></table></div></section>
+          </section>
+
+          <section class="view" id="view-revision" data-title="Revision Tracker">
+            <div class="view-head"><div><p class="eyebrow">Revision cycles</p><h2>Three-pass revision tracker</h2></div></div>
+            <section class="panel"><div class="revision-grid" id="revisionGrid"></div></section>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Revision Heatmap</p><h3>Completion density</h3></div>
+              <div class="heatmap" id="revisionHeatmap"></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-pyq" data-title="PYQ Tracker">
+            <div class="view-head"><div><p class="eyebrow">Previous year questions</p><h2>Accuracy and success rate</h2></div></div>
+            <form class="panel data-form" id="pyqForm" novalidate>
+              <label>Subject<select name="subject" required></select></label>
+              <label>Questions Attempted<input type="number" name="attempted" min="0" required></label>
+              <label>Correct<input type="number" name="correct" min="0" required></label>
+              <label>Incorrect<input type="number" name="incorrect" min="0" required></label>
+              <label>Skipped<input type="number" name="skipped" min="0" required></label>
+              <button class="btn primary" type="submit"><i class="fa-solid fa-plus"></i>Add PYQ Set</button>
+            </form>
+            <div class="stats-grid compact" id="pyqStats"></div>
+            <section class="panel"><div class="table-wrap"><table><thead><tr><th>Subject</th><th>Attempted</th><th>Correct</th><th>Incorrect</th><th>Skipped</th><th>Accuracy</th><th></th></tr></thead><tbody id="pyqTable"></tbody></table></div></section>
+          </section>
+
+          <section class="view" id="view-timer" data-title="Study Timer">
+            <div class="view-head"><div><p class="eyebrow">Pomodoro timer</p><h2>Focus, break, and custom sessions</h2></div></div>
+            <section class="timer-panel">
+              <div class="timer-modes">
+                <button class="seg active" type="button" data-timer-mode="focus"><i class="fa-solid fa-bolt"></i>25 Focus</button>
+                <button class="seg" type="button" data-timer-mode="break"><i class="fa-solid fa-mug-hot"></i>5 Break</button>
+                <label class="custom-time">Custom<input type="number" id="customMinutes" min="1" max="240" value="45"></label>
+                <button class="seg" type="button" data-timer-mode="custom"><i class="fa-solid fa-sliders"></i>Custom</button>
+              </div>
+              <div class="timer-display" id="timerDisplay">25:00</div>
+              <div class="timer-controls">
+                <button class="btn primary" type="button" id="timerStart"><i class="fa-solid fa-play"></i>Start</button>
+                <button class="btn ghost" type="button" id="timerPause"><i class="fa-solid fa-pause"></i>Pause</button>
+                <button class="btn ghost" type="button" id="timerReset"><i class="fa-solid fa-rotate-left"></i>Reset</button>
+              </div>
+              <p class="timer-total" id="timerTotal">Total focus hours: 0.0</p>
+            </section>
+          </section>
+
+          <section class="view" id="view-heatmap" data-title="Activity Heatmap">
+            <div class="view-head"><div><p class="eyebrow">Activity analytics</p><h2>Study activity heatmap</h2></div></div>
+            <section class="panel">
+              <div class="heatmap-legend"><span>No activity</span><span class="heat-cell level-1"></span><span class="heat-cell level-2"></span><span class="heat-cell level-3"></span><span class="heat-cell level-4"></span><span>High activity</span></div>
+              <div class="heatmap activity" id="activityHeatmap"></div>
+            </section>
+            <div class="stats-grid compact" id="activityStats"></div>
+          </section>
+
+          <section class="view" id="view-analytics" data-title="AI Analytics Engine">
+            <div class="view-head"><div><p class="eyebrow">AI analytics engine</p><h2>Prediction and readiness</h2></div></div>
+            <div class="analytics-grid" id="analyticsGrid"></div>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Recommended Daily Hours</p><h3 id="recommendedHours">0 hours</h3></div>
+              <div class="progress-track"><span id="recommendedBar"></span></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-mentor" data-title="AI Mentor">
+            <div class="view-head"><div><p class="eyebrow">AI mentor panel</p><h2>Preparation guidance</h2></div></div>
+            <section class="panel mentor-expanded" id="mentorExpanded"></section>
+          </section>
+
+          <section class="view" id="view-notes" data-title="Notes Vault">
+            <div class="view-head"><div><p class="eyebrow">Notes vault</p><h2>Notes, formulas, and concepts</h2></div></div>
+            <form class="panel data-form notes-form" id="noteForm" novalidate>
+              <input type="hidden" name="noteId">
+              <label>Title<input type="text" name="title" required></label>
+              <label>Type<select name="type"><option>Notes</option><option>Formulas</option><option>Important Concepts</option></select></label>
+              <label class="wide-field">Content<textarea name="content" rows="4" required></textarea></label>
+              <button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save Note</button>
+            </form>
+            <div class="notes-list" id="notesList"></div>
+          </section>
+
+          <section class="view" id="view-reports" data-title="Reports">
+            <div class="view-head"><div><p class="eyebrow">PDF reports</p><h2>Daily, weekly, monthly, mock, and revision exports</h2></div></div>
+            <section class="panel reports-panel">
+              <label>Report Type<select id="reportType"><option value="daily">Daily Report</option><option value="weekly">Weekly Report</option><option value="monthly">Monthly Report</option><option value="mock">Mock Test Report</option><option value="revision">Revision Report</option></select></label>
+              <button class="btn primary" type="button" id="exportPdf"><i class="fa-solid fa-file-pdf"></i>Export PDF</button>
+            </section>
+            <section class="panel report-preview" id="reportPreview"></section>
+          </section>
+        </main>
+
+        <aside class="mentor-rail" id="mentorRail">
+          <div class="mentor-head">
+            <div>
+              <p class="eyebrow">AI Mentor</p>
+              <h3>Ask for guidance</h3>
+            </div>
+            <button class="icon-btn" type="button" id="closeMentor" aria-label="Close AI mentor"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div class="quick-prompts" id="quickPrompts">
+            <button type="button" data-question="What should I study today?">Study today</button>
+            <button type="button" data-question="Analyze my mock test.">Analyze mock</button>
+            <button type="button" data-question="Create revision plan.">Revision plan</button>
+            <button type="button" data-question="Which subject is weakest?">Weakest subject</button>
+            <button type="button" data-question="Predict my GATE score.">Predict score</button>
+            <button type="button" data-question="Create 900+ strategy.">900+ strategy</button>
+          </div>
+          <div class="chat-window" id="mentorChat" aria-live="polite"></div>
+          <form class="mentor-input" id="mentorForm">
+            <input type="text" name="message" aria-label="Message AI mentor" required>
+            <button class="icon-btn primary-icon" type="submit" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+              </button>
+            </div>
+            <div class="split-grid">
+              <section class="panel">
+                <div class="panel-heading"><p class="eyebrow">Daily Plan</p><h3>Today</h3></div>
+                <div class="task-list" id="plannerDaily"></div>
+              </section>
+              <section class="panel">
+                <div class="panel-heading"><p class="eyebrow">Weekly Planner</p><h3>7-day sprint</h3></div>
+                <div class="planner-list" id="weeklyPlanner"></div>
+              </section>
+            </div>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Monthly Planner</p><h3>4-week focus map</h3></div>
+              <div class="month-grid" id="monthlyPlanner"></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-subjects" data-title="Subject Progress">
+            <div class="view-head">
+              <div><p class="eyebrow">Subject tracker</p><h2>Progress by subject</h2></div>
+            </div>
+            <div class="subject-grid" id="subjectProgress"></div>
+          </section>
+
+          <section class="view" id="view-chapters" data-title="Chapter Tracker">
+            <div class="view-head">
+              <div><p class="eyebrow">Chapter completion</p><h2>Mark completed chapters</h2></div>
+              <label class="compact-label">Subject<select id="chapterSubjectSelect"></select></label>
+            </div>
+            <section class="panel">
+              <div class="chapter-header" id="chapterSummary"></div>
+              <div class="chapter-list" id="chapterList"></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-mocks" data-title="Mock Test Analysis">
+            <div class="view-head">
+              <div><p class="eyebrow">Mock analysis</p><h2>Scores, accuracy, and weak topics</h2></div>
+            </div>
+            <form class="panel data-form" id="mockForm" novalidate>
+              <label>Mock Name<input type="text" name="mockName" required></label>
+              <label>Score<input type="number" name="score" min="0" max="100" step="0.01" required></label>
+              <label>Accuracy %<input type="number" name="accuracy" min="0" max="100" step="0.01" required></label>
+              <label>Time Taken (minutes)<input type="number" name="timeTaken" min="1" required></label>
+              <label>Date<input type="date" name="date" required></label>
+              <button class="btn primary" type="submit"><i class="fa-solid fa-plus"></i>Add Mock</button>
+            </form>
+            <div class="stats-grid compact" id="mockStats"></div>
+            <div class="split-grid">
+              <section class="panel"><div class="panel-heading"><p class="eyebrow">Score Trend</p><h3>Mock scores</h3></div><canvas id="scoreTrendChart" height="190"></canvas></section>
+              <section class="panel"><div class="panel-heading"><p class="eyebrow">Accuracy Trend</p><h3>Accuracy curve</h3></div><canvas id="accuracyTrendChart" height="190"></canvas></section>
+            </div>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Weak Topic Detection</p><h3>Priority ranking</h3></div>
+              <div class="weak-topic-list" id="weakTopics"></div>
+            </section>
+            <section class="panel"><div class="table-wrap"><table><thead><tr><th>Mock</th><th>Score</th><th>Accuracy</th><th>Time</th><th>Date</th><th></th></tr></thead><tbody id="mockTable"></tbody></table></div></section>
+          </section>
+
+          <section class="view" id="view-revision" data-title="Revision Tracker">
+            <div class="view-head"><div><p class="eyebrow">Revision cycles</p><h2>Three-pass revision tracker</h2></div></div>
+            <section class="panel"><div class="revision-grid" id="revisionGrid"></div></section>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Revision Heatmap</p><h3>Completion density</h3></div>
+              <div class="heatmap" id="revisionHeatmap"></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-pyq" data-title="PYQ Tracker">
+            <div class="view-head"><div><p class="eyebrow">Previous year questions</p><h2>Accuracy and success rate</h2></div></div>
+            <form class="panel data-form" id="pyqForm" novalidate>
+              <label>Subject<select name="subject" required></select></label>
+              <label>Questions Attempted<input type="number" name="attempted" min="0" required></label>
+              <label>Correct<input type="number" name="correct" min="0" required></label>
+              <label>Incorrect<input type="number" name="incorrect" min="0" required></label>
+              <label>Skipped<input type="number" name="skipped" min="0" required></label>
+              <button class="btn primary" type="submit"><i class="fa-solid fa-plus"></i>Add PYQ Set</button>
+            </form>
+            <div class="stats-grid compact" id="pyqStats"></div>
+            <section class="panel"><div class="table-wrap"><table><thead><tr><th>Subject</th><th>Attempted</th><th>Correct</th><th>Incorrect</th><th>Skipped</th><th>Accuracy</th><th></th></tr></thead><tbody id="pyqTable"></tbody></table></div></section>
+          </section>
+
+          <section class="view" id="view-timer" data-title="Study Timer">
+            <div class="view-head"><div><p class="eyebrow">Pomodoro timer</p><h2>Focus, break, and custom sessions</h2></div></div>
+            <section class="timer-panel">
+              <div class="timer-modes">
+                <button class="seg active" type="button" data-timer-mode="focus"><i class="fa-solid fa-bolt"></i>25 Focus</button>
+                <button class="seg" type="button" data-timer-mode="break"><i class="fa-solid fa-mug-hot"></i>5 Break</button>
+                <label class="custom-time">Custom<input type="number" id="customMinutes" min="1" max="240" value="45"></label>
+                <button class="seg" type="button" data-timer-mode="custom"><i class="fa-solid fa-sliders"></i>Custom</button>
+              </div>
+              <div class="timer-display" id="timerDisplay">25:00</div>
+              <div class="timer-controls">
+                <button class="btn primary" type="button" id="timerStart"><i class="fa-solid fa-play"></i>Start</button>
+                <button class="btn ghost" type="button" id="timerPause"><i class="fa-solid fa-pause"></i>Pause</button>
+                <button class="btn ghost" type="button" id="timerReset"><i class="fa-solid fa-rotate-left"></i>Reset</button>
+              </div>
+              <p class="timer-total" id="timerTotal">Total focus hours: 0.0</p>
+            </section>
+          </section>
+
+          <section class="view" id="view-heatmap" data-title="Activity Heatmap">
+            <div class="view-head"><div><p class="eyebrow">Activity analytics</p><h2>Study activity heatmap</h2></div></div>
+            <section class="panel">
+              <div class="heatmap-legend"><span>No activity</span><span class="heat-cell level-1"></span><span class="heat-cell level-2"></span><span class="heat-cell level-3"></span><span class="heat-cell level-4"></span><span>High activity</span></div>
+              <div class="heatmap activity" id="activityHeatmap"></div>
+            </section>
+            <div class="stats-grid compact" id="activityStats"></div>
+          </section>
+
+          <section class="view" id="view-analytics" data-title="AI Analytics Engine">
+            <div class="view-head"><div><p class="eyebrow">AI analytics engine</p><h2>Prediction and readiness</h2></div></div>
+            <div class="analytics-grid" id="analyticsGrid"></div>
+            <section class="panel">
+              <div class="panel-heading"><p class="eyebrow">Recommended Daily Hours</p><h3 id="recommendedHours">0 hours</h3></div>
+              <div class="progress-track"><span id="recommendedBar"></span></div>
+            </section>
+          </section>
+
+          <section class="view" id="view-mentor" data-title="AI Mentor">
+            <div class="view-head"><div><p class="eyebrow">AI mentor panel</p><h2>Preparation guidance</h2></div></div>
+            <section class="panel mentor-expanded" id="mentorExpanded"></section>
+          </section>
+
+          <section class="view" id="view-notes" data-title="Notes Vault">
+            <div class="view-head"><div><p class="eyebrow">Notes vault</p><h2>Notes, formulas, and concepts</h2></div></div>
+            <form class="panel data-form notes-form" id="noteForm" novalidate>
+              <input type="hidden" name="noteId">
+              <label>Title<input type="text" name="title" required></label>
+              <label>Type<select name="type"><option>Notes</option><option>Formulas</option><option>Important Concepts</option></select></label>
+              <label class="wide-field">Content<textarea name="content" rows="4" required></textarea></label>
+              <button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save Note</button>
+            </form>
+            <div class="notes-list" id="notesList"></div>
+          </section>
+
+          <section class="view" id="view-reports" data-title="Reports">
+            <div class="view-head"><div><p class="eyebrow">PDF reports</p><h2>Daily, weekly, monthly, mock, and revision exports</h2></div></div>
+            <section class="panel reports-panel">
+              <label>Report Type<select id="reportType"><option value="daily">Daily Report</option><option value="weekly">Weekly Report</option><option value="monthly">Monthly Report</option><option value="mock">Mock Test Report</option><option value="revision">Revision Report</option></select></label>
+              <button class="btn primary" type="button" id="exportPdf"><i class="fa-solid fa-file-pdf"></i>Export PDF</button>
+            </section>
+            <section class="panel report-preview" id="reportPreview"></section>
+          </section>
+        </main>
+
+        <aside class="mentor-rail" id="mentorRail">
+          <div class="mentor-head">
+            <div>
+              <p class="eyebrow">AI Mentor</p>
+              <h3>Ask for guidance</h3>
+            </div>
+            <button class="icon-btn" type="button" id="closeMentor" aria-label="Close AI mentor"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div class="quick-prompts" id="quickPrompts">
+            <button type="button" data-question="What should I study today?">Study today</button>
+            <button type="button" data-question="Analyze my mock test.">Analyze mock</button>
+            <button type="button" data-question="Create revision plan.">Revision plan</button>
+            <button type="button" data-question="Which subject is weakest?">Weakest subject</button>
+            <button type="button" data-question="Predict my GATE score.">Predict score</button>
+            <button type="button" data-question="Create 900+ strategy.">900+ strategy</button>
+          </div>
+          <div class="chat-window" id="mentorChat" aria-live="polite"></div>
+          <form class="mentor-input" id="mentorForm">
+            <input type="text" name="message" aria-label="Message AI mentor" required>
+            <button class="icon-btn primary-icon" type="submit" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </section>
+  
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
